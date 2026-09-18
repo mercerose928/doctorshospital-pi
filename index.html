@@ -1,1 +1,597 @@
-HTML
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#5b35d5">
+<title>DoctorsHospital.pi</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f5f7fc;
+  color: #17213d;
+}
+
+button, input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+.header {
+  background: linear-gradient(135deg, #43229b, #7148df);
+  color: white;
+  padding: 20px;
+  border-radius: 0 0 28px 28px;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-icon {
+  width: 48px;
+  height: 48px;
+  background: white;
+  color: #5730b7;
+  border-radius: 16px;
+  display: grid;
+  place-items: center;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.logo h1 {
+  font-size: 20px;
+  margin: 0;
+}
+
+.logo small {
+  font-size: 12px;
+  opacity: .85;
+}
+
+.pi {
+  color: #ffd34d;
+}
+
+.profile {
+  background: rgba(255,255,255,.18);
+  border: 1px solid rgba(255,255,255,.3);
+  border-radius: 50%;
+  width: 42px;
+  height: 42px;
+  color: white;
+  font-size: 20px;
+}
+
+.hero {
+  margin-top: 28px;
+}
+
+.hero h2 {
+  font-size: 28px;
+  line-height: 1.15;
+  margin: 0 0 10px;
+}
+
+.hero p {
+  line-height: 1.6;
+  margin: 0;
+  opacity: .9;
+}
+
+.search {
+  margin-top: 20px;
+  display: flex;
+  background: white;
+  border-radius: 14px;
+  padding: 5px;
+}
+
+.search input {
+  width: 100%;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  padding: 12px;
+  color: #222;
+}
+
+.search button {
+  background: #f0ebff;
+  color: #5530b6;
+  border: 0;
+  border-radius: 10px;
+  padding: 0 16px;
+}
+
+.container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 24px 18px 100px;
+}
+
+.section-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin: 20px 0 14px;
+}
+
+.section-title h2 {
+  font-size: 21px;
+  margin: 0;
+}
+
+.section-title span {
+  color: #6d7190;
+  font-size: 13px;
+}
+
+.services {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.service {
+  background: white;
+  border: 1px solid #e8eaf3;
+  border-radius: 18px;
+  padding: 18px 14px;
+  text-align: left;
+  box-shadow: 0 5px 18px rgba(40,30,90,.04);
+  transition: transform .2s;
+}
+
+.service:active {
+  transform: scale(.98);
+}
+
+.service .icon {
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+
+.service h3 {
+  margin: 0 0 6px;
+  font-size: 15px;
+}
+
+.service p {
+  margin: 0;
+  color: #777d98;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.service .arrow {
+  color: #6740ce;
+  font-weight: bold;
+  margin-top: 12px;
+  display: block;
+}
+
+.emergency {
+  background: linear-gradient(135deg, #fff0f0, #ffe5e5);
+  border: 1px solid #ffd0d0;
+  border-radius: 20px;
+  padding: 18px;
+  margin-top: 24px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.emergency-icon {
+  font-size: 35px;
+}
+
+.emergency h3 {
+  margin: 0 0 5px;
+  color: #a51e2d;
+}
+
+.emergency p {
+  margin: 0;
+  color: #7c4a4a;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.emergency button {
+  margin-left: auto;
+  background: #c6283a;
+  color: white;
+  border: 0;
+  border-radius: 12px;
+  padding: 11px 14px;
+  font-weight: bold;
+}
+
+.info-card {
+  background: white;
+  border-radius: 20px;
+  padding: 20px;
+  margin-top: 24px;
+  border: 1px solid #e8eaf3;
+}
+
+.info-card h2 {
+  margin: 0 0 8px;
+  font-size: 19px;
+}
+
+.info-card p {
+  color: #69708b;
+  font-size: 14px;
+  line-height: 1.7;
+  margin: 0;
+}
+
+.pi-card {
+  background: linear-gradient(135deg, #33206d, #5a35b9);
+  color: white;
+  border-radius: 20px;
+  padding: 20px;
+  margin-top: 24px;
+}
+
+.pi-card h2 {
+  margin: 0 0 8px;
+}
+
+.pi-card p {
+  margin: 0;
+  line-height: 1.6;
+  font-size: 14px;
+  opacity: .9;
+}
+
+.status {
+  margin-top: 15px;
+  display: inline-block;
+  background: rgba(255,255,255,.15);
+  border-radius: 20px;
+  padding: 8px 12px;
+  font-size: 12px;
+}
+
+.footer {
+  text-align: center;
+  color: #7d829a;
+  font-size: 12px;
+  padding: 25px 10px;
+}
+
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: white;
+  border-top: 1px solid #e5e6ef;
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 4px;
+  z-index: 10;
+}
+
+.bottom-nav button {
+  border: 0;
+  background: transparent;
+  color: #8b8fa5;
+  font-size: 11px;
+  padding: 6px 12px;
+}
+
+.bottom-nav button span {
+  display: block;
+  font-size: 22px;
+  margin-bottom: 3px;
+}
+
+.bottom-nav button.active {
+  color: #5730b7;
+  font-weight: bold;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(20,15,45,.6);
+  z-index: 20;
+  padding: 20px;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal.show {
+  display: flex;
+}
+
+.modal-box {
+  background: white;
+  border-radius: 22px;
+  padding: 24px;
+  max-width: 420px;
+  width: 100%;
+  max-height: 85vh;
+  overflow-y: auto;
+}
+
+.modal-box h2 {
+  margin-top: 0;
+}
+
+.modal-box p {
+  color: #666d88;
+  line-height: 1.6;
+  font-size: 14px;
+}
+
+.close {
+  float: right;
+  border: 0;
+  background: #f1effa;
+  color: #5730b7;
+  border-radius: 50%;
+  width: 34px;
+  height: 34px;
+  font-size: 18px;
+}
+
+.modal-action {
+  width: 100%;
+  background: #5730b7;
+  color: white;
+  border: 0;
+  border-radius: 12px;
+  padding: 14px;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+@media (min-width: 600px) {
+  .services {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .header {
+    padding: 30px;
+  }
+
+  .container {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+  .hero h2 {
+    font-size: 36px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+  <div class="top">
+    <div class="logo">
+      <div class="logo-icon">✚</div>
+      <div>
+        <h1>DoctorsHospital<span class="pi">.pi</span></h1>
+        <small>Healthcare • Powered by Pi Vision</small>
+      </div>
+    </div>
+    <button class="profile" onclick="showInfo('Profile')">♙</button>
+  </div>
+
+  <div class="hero">
+    <h2>Your Health.<br>Your Community.</h2>
+    <p>
+      Welcome to DoctorsHospital.pi — your digital healthcare
+      community for convenient access to medical services.
+    </p>
+  </div>
+
+  <div class="search">
+    <input id="searchInput" type="search"
+      placeholder="Search healthcare services..."
+      oninput="searchServices()">
+    <button onclick="searchServices()">⌕</button>
+  </div>
+</header>
+
+<main class="container">
+
+  <div class="section-title">
+    <h2>Healthcare Services</h2>
+    <span>Explore services</span>
+  </div>
+
+  <section class="services" id="services">
+
+    <button class="service" data-name="hospital"
+      onclick="showInfo('Hospital')">
+      <div class="icon">🏥</div>
+      <h3>Hospital</h3>
+      <p>Hospital information and healthcare services.</p>
+      <span class="arrow">Explore →</span>
+    </button>
+
+    <button class="service" data-name="pharmacy"
+      onclick="showInfo('Pharmacy')">
+      <div class="icon">💊</div>
+      <h3>Pharmacy</h3>
+      <p>Medicine information and pharmacy services.</p>
+      <span class="arrow">Explore →</span>
+    </button>
+
+    <button class="service" data-name="ambulance emergency"
+      onclick="showInfo('Ambulance / Emergency Services')">
+      <div class="icon">🚑</div>
+      <h3>Ambulance / Emergency</h3>
+      <p>Emergency service information and contacts.</p>
+      <span class="arrow">Explore →</span>
+    </button>
+
+    <button class="service" data-name="molecular laboratory"
+      onclick="showInfo('Molecular Laboratory')">
+      <div class="icon">🧬</div>
+      <h3>Molecular Laboratory</h3>
+      <p>Laboratory testing and molecular diagnostics.</p>
+      <span class="arrow">Explore →</span>
+    </button>
+
+    <button class="service" data-name="multispecialty clinic diagnostic center"
+      onclick="showInfo('Multispecialty Clinic and Diagnostic Center')">
+      <div class="icon">🩺</div>
+      <h3>Multispecialty Clinic</h3>
+      <p>Specialist consultations and diagnostic services.</p>
+      <span class="arrow">Explore →</span>
+    </button>
+
+    <button class="service" data-name="doctors appointments"
+      onclick="showInfo('Doctors and Appointments')">
+      <div class="icon">👨‍⚕️</div>
+      <h3>Doctors & Appointments</h3>
+      <p>Doctor information and appointment planning.</p>
+      <span class="arrow">Explore →</span>
+    </button>
+
+  </section>
+
+  <section class="emergency">
+    <div class="emergency-icon">🚨</div>
+    <div>
+      <h3>Emergency Assistance</h3>
+      <p>For real emergencies, contact your local emergency services.</p>
+    </div>
+    <button onclick="showInfo('Emergency Assistance')">Info</button>
+  </section>
+
+  <section class="info-card">
+    <h2>About DoctorsHospital<span class="pi">.pi</span></h2>
+    <p>
+      A healthcare website prototype designed for mobile users.
+      It brings hospital, pharmacy, laboratory, clinic and
+      emergency service information into one digital platform.
+    </p>
+  </section>
+
+  <section class="pi-card">
+    <h2>🟣 Pi Network Inspired</h2>
+    <p>
+      A professional healthcare experience with a modern
+      purple and gold Pi-inspired design.
+    </p>
+    <span class="status">Prototype • Development Stage</span>
+  </section>
+
+</main>
+
+<footer class="footer">
+  DoctorsHospital.pi © 2026<br>
+  Healthcare Website Prototype
+</footer>
+
+<nav class="bottom-nav">
+  <button class="active" onclick="goHome()">
+    <span>⌂</span>Home
+  </button>
+  <button onclick="showInfo('Healthcare Services')">
+    <span>▦</span>Services
+  </button>
+  <button onclick="showInfo('About DoctorsHospital.pi')">
+    <span>ⓘ</span>About
+  </button>
+  <button onclick="showInfo('Profile')">
+    <span>♙</span>Profile
+  </button>
+</nav>
+
+<div class="modal" id="modal" onclick="closeOutside(event)">
+  <div class="modal-box">
+    <button class="close" onclick="closeModal()">×</button>
+    <h2 id="modalTitle">Healthcare Service</h2>
+    <p id="modalText"></p>
+    <button class="modal-action" onclick="closeModal()">Close</button>
+  </div>
+</div>
+
+<script>
+const details = {
+  "Hospital": "Welcome to the Hospital section. This prototype can later include hospital information, departments, facilities, doctors and appointment services.",
+  "Pharmacy": "Welcome to the Pharmacy section. This prototype can later include pharmacy information, medicine availability and ordering features.",
+  "Ambulance / Emergency Services": "Emergency services information will be available here. For a real emergency, contact your local emergency services immediately.",
+  "Molecular Laboratory": "Molecular Laboratory services can include information about laboratory testing, diagnostics, sample collection and results.",
+  "Multispecialty Clinic and Diagnostic Center": "This section can include specialist consultations, diagnostic procedures, clinic schedules and booking features.",
+  "Doctors and Appointments": "This section can later include doctor profiles, specialties, clinic schedules and appointment requests.",
+  "Healthcare Services": "Explore Hospital, Pharmacy, Ambulance/Emergency Services, Molecular Laboratory, Multispecialty Clinic and Diagnostic Center.",
+  "About DoctorsHospital.pi": "DoctorsHospital.pi is a healthcare website prototype with a professional medical design and Pi Network-inspired colors.",
+  "Profile": "Profile features can be added in a future version, including patient accounts and appointment history.",
+  "Emergency Assistance": "For real emergencies, contact your local emergency hotline or go to the nearest emergency department."
+};
+
+function showInfo(title) {
+  document.getElementById("modalTitle").textContent = title;
+  document.getElementById("modalText").textContent =
+    details[title] || "This service is part of the DoctorsHospital.pi prototype.";
+  document.getElementById("modal").classList.add("show");
+}
+
+function closeModal() {
+  document.getElementById("modal").classList.remove("show");
+}
+
+function closeOutside(event) {
+  if (event.target.id === "modal") {
+    closeModal();
+  }
+}
+
+function searchServices() {
+  const query = document.getElementById("searchInput").value.toLowerCase().trim();
+  const cards = document.querySelectorAll(".service");
+
+  cards.forEach(card => {
+    const name = card.dataset.name;
+    card.style.display = name.includes(query) ? "" : "none";
+  });
+}
+
+function goHome() {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+document.addEventListener("keydown", function(event) {
+  if (event.key === "Escape") {
+    closeModal();
+  }
+});
+</script>
+
+</body>
+</html>
